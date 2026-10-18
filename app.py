@@ -1745,6 +1745,72 @@ def render_screen_4_view_cart():
             st.session_state.current_screen = "product_listing" if st.session_state.get("selected_subcat") else "home"
             st.rerun()
     else:
+        # Cart quantity stepper buttons styling: vibrant yellow background and high-contrast bold black signs
+        st.markdown(
+            """
+            <style>
+            div[data-testid="column"]:has(.cart-stepper-btn-dec) button,
+            div[data-testid="column"]:has(.cart-stepper-btn-inc) button,
+            div[data-testid="stColumn"]:has(.cart-stepper-btn-dec) button,
+            div[data-testid="stColumn"]:has(.cart-stepper-btn-inc) button,
+            .stColumn:has(.cart-stepper-btn-dec) button,
+            .stColumn:has(.cart-stepper-btn-inc) button,
+            div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button {
+                background-color: #FFD814 !important;
+                background: #FFD814 !important;
+                color: #000000 !important;
+                border: 1.5px solid #D4A000 !important;
+                font-size: 18px !important;
+                font-weight: 900 !important;
+                height: 30px !important;
+                min-height: 30px !important;
+                max-height: 30px !important;
+                width: 30px !important;
+                min-width: 30px !important;
+                max-width: 30px !important;
+                border-radius: 6px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+                cursor: pointer !important;
+                padding: 0 !important;
+                line-height: 1 !important;
+            }
+            div[data-testid="column"]:has(.cart-stepper-btn-dec) button *,
+            div[data-testid="column"]:has(.cart-stepper-btn-inc) button *,
+            div[data-testid="stColumn"]:has(.cart-stepper-btn-dec) button *,
+            div[data-testid="stColumn"]:has(.cart-stepper-btn-inc) button *,
+            .stColumn:has(.cart-stepper-btn-dec) button *,
+            .stColumn:has(.cart-stepper-btn-inc) button *,
+            div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button * {
+                color: #000000 !important;
+                font-size: 18px !important;
+                font-weight: 900 !important;
+                line-height: 1 !important;
+                -webkit-text-fill-color: #000000 !important;
+            }
+            div[data-testid="column"]:has(.cart-stepper-btn-dec) button:hover,
+            div[data-testid="column"]:has(.cart-stepper-btn-inc) button:hover,
+            div[data-testid="stColumn"]:has(.cart-stepper-btn-dec) button:hover,
+            div[data-testid="stColumn"]:has(.cart-stepper-btn-inc) button:hover,
+            .stColumn:has(.cart-stepper-btn-dec) button:hover,
+            .stColumn:has(.cart-stepper-btn-inc) button:hover,
+            div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button:hover {
+                background-color: #F0C000 !important;
+                background: #F0C000 !important;
+                border-color: #B8860B !important;
+                color: #000000 !important;
+            }
+            div[data-testid="stElementContainer"]:has(.cart-stepper-btn-dec),
+            div[data-testid="stElementContainer"]:has(.cart-stepper-btn-inc) {
+                display: none !important;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
+
         # Grouped Cart Items with Quantities and Controls
         unique_pids = []
         for item in st.session_state.cart:
@@ -1763,21 +1829,20 @@ def render_screen_4_view_cart():
             with st.container(border=True):
                 col_info, col_ctrl, col_total = st.columns([5, 4, 3], vertical_alignment="center")
                 with col_info:
-                    st.markdown(
-                        f"""
-                        <div class="cart-item-info">
-                            <span class="cart-item-icon">{prod.get("icon", "📦")}</span>
-                            <div class="cart-item-text">
-                                <div class="cart-item-name" title="{prod['name']}">{prod['name']}</div>
-                                <div class="cart-item-meta">{prod.get("weight", "")} · ₹{unit_price} each</div>
-                            </div>
-                        </div>
-                        """,
-                        unsafe_allow_html=True,
+                    cart_item_html = (
+                        f'<div class="cart-item-info">'
+                        f'<span class="cart-item-icon">{prod.get("icon", "📦")}</span>'
+                        f'<div class="cart-item-text">'
+                        f'<div class="cart-item-name" title="{prod["name"]}">{prod["name"]}</div>'
+                        f'<div class="cart-item-meta">{prod.get("weight", "")} · ₹{unit_price} each</div>'
+                        f'</div>'
+                        f'</div>'
                     )
+                    st.markdown(cart_item_html, unsafe_allow_html=True)
                 with col_ctrl:
                     col_m, col_q, col_p = st.columns([1, 1, 1], vertical_alignment="center")
                     with col_m:
+                        st.markdown('<div class="cart-stepper-btn-dec"></div>', unsafe_allow_html=True)
                         if st.button("−", key=f"btn_cart_dec_{pid}", help="Decrease quantity", use_container_width=True):
                             for idx, itm in enumerate(st.session_state.cart):
                                 if itm.get("id") == pid:
@@ -1787,6 +1852,7 @@ def render_screen_4_view_cart():
                     with col_q:
                         st.markdown(f'<div class="cart-qty-display">{qty}</div>', unsafe_allow_html=True)
                     with col_p:
+                        st.markdown('<div class="cart-stepper-btn-inc"></div>', unsafe_allow_html=True)
                         if st.button("+", key=f"btn_cart_inc_{pid}", help="Increase quantity", use_container_width=True):
                             st.session_state.cart.append(prod)
                             st.rerun()
@@ -1795,17 +1861,15 @@ def render_screen_4_view_cart():
 
         # Calculated Subtotal
         subtotal = sum(p.get("price", 0) for p in st.session_state.cart)
-        st.markdown(
-            f"""
-            <div class="cart-subtotal-card">
-                <div class="cart-subtotal-row">
-                    <span class="cart-subtotal-label">Subtotal ({cart_count} {item_label})</span>
-                    <span class="cart-subtotal-value">₹{subtotal}</span>
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
+        subtotal_html = (
+            f'<div class="cart-subtotal-card">'
+            f'<div class="cart-subtotal-row">'
+            f'<span class="cart-subtotal-label">Subtotal ({cart_count} {item_label})</span>'
+            f'<span class="cart-subtotal-value">₹{subtotal}</span>'
+            f'</div>'
+            f'</div>'
         )
+        st.markdown(subtotal_html, unsafe_allow_html=True)
 
     # Recommendation Section
     st.markdown(

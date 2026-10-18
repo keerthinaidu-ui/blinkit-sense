@@ -391,13 +391,13 @@ div[data-testid="stVerticalBlockBorderWrapper"] > div {
     margin-bottom: 4px;
 }
 
-/* Streamlit Button Styling (Excluding subcategory card buttons) */
-div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *) div[data-testid="stButton"] {
+/* Streamlit Button Styling (Excluding subcategory card buttons and cart stepper buttons) */
+div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *):not(div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) *) div[data-testid="stButton"] {
     width: 100% !important;
     margin-top: 4px !important;
 }
 
-div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *) div[data-testid="stButton"] > button:not([data-testid="baseButton-tertiary"]):not([kind="tertiary"]) {
+div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *):not(div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) *) div[data-testid="stButton"] > button:not([data-testid="baseButton-tertiary"]):not([kind="tertiary"]) {
     border-radius: 10px !important;
     height: 46px !important;
     min-height: 46px !important;
@@ -414,23 +414,23 @@ div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div
 }
 
 /* Primary Button Styling (Continue, Start Shopping) */
-div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *) div[data-testid="stButton"] > button[kind="primary"],
-div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *) div[data-testid="stButton"] > button[data-testid="baseButton-primary"],
-div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *) div[data-testid="stButton"] > button:not([kind="secondary"]):not([data-testid="baseButton-secondary"]):not([kind="tertiary"]):not([data-testid="baseButton-tertiary"]) {
+div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *):not(div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) *) div[data-testid="stButton"] > button[kind="primary"],
+div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *):not(div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) *) div[data-testid="stButton"] > button[data-testid="baseButton-primary"],
+div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *):not(div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) *) div[data-testid="stButton"] > button:not([kind="secondary"]):not([data-testid="baseButton-secondary"]):not([kind="tertiary"]):not([data-testid="baseButton-tertiary"]) {
     background-color: #0C831F !important;
     color: #FFFFFF !important;
     border: none !important;
 }
 
-div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *) div[data-testid="stButton"] > button[kind="primary"]:hover,
-div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *) div[data-testid="stButton"] > button[data-testid="baseButton-primary"]:hover {
+div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *):not(div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) *) div[data-testid="stButton"] > button[kind="primary"]:hover,
+div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *):not(div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) *) div[data-testid="stButton"] > button[data-testid="baseButton-primary"]:hover {
     background-color: #0a6f1a !important;
     color: #FFFFFF !important;
 }
 
-/* Secondary Button Styling (Switch Scenario, etc. - scoped outside subcategory cards) */
-div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *) div[data-testid="stButton"] > button[kind="secondary"],
-div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *) div[data-testid="stButton"] > button[data-testid="baseButton-secondary"] {
+/* Secondary Button Styling (Switch Scenario, etc. - scoped outside subcategory cards and cart stepper) */
+div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *):not(div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) *) div[data-testid="stButton"] > button[kind="secondary"],
+div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *):not(div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) *) div[data-testid="stButton"] > button[data-testid="baseButton-secondary"] {
     background-color: #FFFFFF !important;
     color: #1F1F1F !important;
     border: 1px solid #E8E8E8 !important;
@@ -439,8 +439,8 @@ div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div
     font-size: 14px !important;
 }
 
-div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *) div[data-testid="stButton"] > button[kind="secondary"]:hover,
-div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *) div[data-testid="stButton"] > button[data-testid="baseButton-secondary"]:hover {
+div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *):not(div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) *) div[data-testid="stButton"] > button[kind="secondary"]:hover,
+div[data-testid="stElementContainer"]:not(.stColumn:has(.subcat-card) *):not(div[data-testid="stColumn"]:has(.subcat-card) *):not(div[data-testid="column"]:has(.subcat-card) *):not(div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) *) div[data-testid="stButton"] > button[data-testid="baseButton-secondary"]:hover {
     background-color: #F5F5F5 !important;
     color: #1F1F1F !important;
     border-color: #D0D0D0 !important;
@@ -1440,29 +1440,83 @@ div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) {
 }
 
 /* Stepper Quantity Controls in Cart */
-div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button {
-    height: 28px !important;
-    min-height: 28px !important;
-    max-height: 28px !important;
-    width: 28px !important;
+div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button,
+div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button[data-testid="baseButton-secondary"],
+div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button[kind="secondary"],
+div[data-testid="stVerticalBlock"]:has(.cart-item-info) div[data-testid="stButton"] > button,
+div[data-testid="stVerticalBlock"]:has(.cart-item-info) div[data-testid="stButton"] > button[data-testid="baseButton-secondary"],
+div[data-testid="stColumn"]:has(.cart-stepper-btn-dec) div[data-testid="stButton"] > button,
+div[data-testid="stColumn"]:has(.cart-stepper-btn-dec) div[data-testid="stButton"] > button[data-testid="baseButton-secondary"],
+div[data-testid="stColumn"]:has(.cart-stepper-btn-inc) div[data-testid="stButton"] > button,
+div[data-testid="stColumn"]:has(.cart-stepper-btn-inc) div[data-testid="stButton"] > button[data-testid="baseButton-secondary"],
+div[data-testid="column"]:has(.cart-stepper-btn-dec) div[data-testid="stButton"] > button,
+div[data-testid="column"]:has(.cart-stepper-btn-dec) div[data-testid="stButton"] > button[data-testid="baseButton-secondary"],
+div[data-testid="column"]:has(.cart-stepper-btn-inc) div[data-testid="stButton"] > button,
+div[data-testid="column"]:has(.cart-stepper-btn-inc) div[data-testid="stButton"] > button[data-testid="baseButton-secondary"],
+div[data-testid="stColumn"]:has(.cart-qty-display) ~ div[data-testid="stColumn"] div[data-testid="stButton"] > button {
+    height: 30px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+    width: 30px !important;
+    min-width: 30px !important;
+    max-width: 30px !important;
     padding: 0 !important;
-    font-size: 15px !important;
-    font-weight: 700 !important;
+    font-size: 18px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
     border-radius: 6px !important;
-    background-color: #F5F5F5 !important;
-    color: #0C831F !important;
-    border: 1px solid #D8D8D8 !important;
+    background-color: #FFD814 !important; /* Yellow background */
+    background: #FFD814 !important;
+    color: #000000 !important;            /* High contrast pure black for signs */
+    border: 1.5px solid #D4A000 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     margin: 0 auto !important;
-    box-shadow: none !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+    cursor: pointer !important;
 }
 
-div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button:hover {
-    background-color: #EBF8EE !important;
-    border-color: #0C831F !important;
-    color: #0C831F !important;
+div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button *,
+div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button p,
+div[data-testid="stVerticalBlock"]:has(.cart-item-info) div[data-testid="stButton"] > button *,
+div[data-testid="stColumn"]:has(.cart-stepper-btn-dec) div[data-testid="stButton"] > button *,
+div[data-testid="stColumn"]:has(.cart-stepper-btn-inc) div[data-testid="stButton"] > button *,
+div[data-testid="column"]:has(.cart-stepper-btn-dec) div[data-testid="stButton"] > button *,
+div[data-testid="column"]:has(.cart-stepper-btn-inc) div[data-testid="stButton"] > button *,
+div[data-testid="stColumn"]:has(.cart-qty-display) ~ div[data-testid="stColumn"] div[data-testid="stButton"] > button * {
+    color: #000000 !important;
+    font-size: 18px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button:hover,
+div[data-testid="stVerticalBlock"]:has(.cart-item-info) div[data-testid="stButton"] > button:hover,
+div[data-testid="stColumn"]:has(.cart-stepper-btn-dec) div[data-testid="stButton"] > button:hover,
+div[data-testid="stColumn"]:has(.cart-stepper-btn-inc) div[data-testid="stButton"] > button:hover,
+div[data-testid="column"]:has(.cart-stepper-btn-dec) div[data-testid="stButton"] > button:hover,
+div[data-testid="column"]:has(.cart-stepper-btn-inc) div[data-testid="stButton"] > button:hover,
+div[data-testid="stColumn"]:has(.cart-qty-display) ~ div[data-testid="stColumn"] div[data-testid="stButton"] > button:hover {
+    background-color: #F0C000 !important;
+    background: #F0C000 !important;
+    border-color: #B8860B !important;
+    color: #000000 !important;
+}
+
+div[data-testid="stElementContainer"]:has(.cart-stepper-btn-dec),
+div[data-testid="stElementContainer"]:has(.cart-stepper-btn-inc) {
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
 }
 
 .cart-qty-display {
