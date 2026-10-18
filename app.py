@@ -1745,29 +1745,29 @@ def render_screen_4_view_cart():
             st.session_state.current_screen = "product_listing" if st.session_state.get("selected_subcat") else "home"
             st.rerun()
     else:
-        # Cart quantity stepper buttons styling: vibrant yellow background and high-contrast bold black signs
+        # Cart styling: stepper buttons, add buttons, and place order buttons
         st.markdown(
             """
             <style>
+            /* Stepper Quantity Controls in Cart */
             div[data-testid="column"]:has(.cart-stepper-btn-dec) button,
             div[data-testid="column"]:has(.cart-stepper-btn-inc) button,
             div[data-testid="stColumn"]:has(.cart-stepper-btn-dec) button,
             div[data-testid="stColumn"]:has(.cart-stepper-btn-inc) button,
             .stColumn:has(.cart-stepper-btn-dec) button,
-            .stColumn:has(.cart-stepper-btn-inc) button,
-            div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button {
+            .stColumn:has(.cart-stepper-btn-inc) button {
                 background-color: #FFD814 !important;
                 background: #FFD814 !important;
                 color: #000000 !important;
                 border: 1.5px solid #D4A000 !important;
-                font-size: 18px !important;
+                font-size: 22px !important;
                 font-weight: 900 !important;
-                height: 30px !important;
-                min-height: 30px !important;
-                max-height: 30px !important;
-                width: 30px !important;
-                min-width: 30px !important;
-                max-width: 30px !important;
+                height: 32px !important;
+                min-height: 32px !important;
+                max-height: 32px !important;
+                width: 32px !important;
+                min-width: 32px !important;
+                max-width: 32px !important;
                 border-radius: 6px !important;
                 display: flex !important;
                 align-items: center !important;
@@ -1778,32 +1778,125 @@ def render_screen_4_view_cart():
                 line-height: 1 !important;
             }
             div[data-testid="column"]:has(.cart-stepper-btn-dec) button *,
+            div[data-testid="column"]:has(.cart-stepper-btn-dec) button p,
             div[data-testid="column"]:has(.cart-stepper-btn-inc) button *,
+            div[data-testid="column"]:has(.cart-stepper-btn-inc) button p,
             div[data-testid="stColumn"]:has(.cart-stepper-btn-dec) button *,
             div[data-testid="stColumn"]:has(.cart-stepper-btn-inc) button *,
             .stColumn:has(.cart-stepper-btn-dec) button *,
-            .stColumn:has(.cart-stepper-btn-inc) button *,
-            div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button * {
+            .stColumn:has(.cart-stepper-btn-inc) button * {
                 color: #000000 !important;
-                font-size: 18px !important;
+                font-size: 22px !important;
                 font-weight: 900 !important;
                 line-height: 1 !important;
                 -webkit-text-fill-color: #000000 !important;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }
             div[data-testid="column"]:has(.cart-stepper-btn-dec) button:hover,
             div[data-testid="column"]:has(.cart-stepper-btn-inc) button:hover,
             div[data-testid="stColumn"]:has(.cart-stepper-btn-dec) button:hover,
             div[data-testid="stColumn"]:has(.cart-stepper-btn-inc) button:hover,
             .stColumn:has(.cart-stepper-btn-dec) button:hover,
-            .stColumn:has(.cart-stepper-btn-inc) button:hover,
-            div[data-testid="stVerticalBlockBorderWrapper"]:has(.cart-item-info) div[data-testid="stButton"] > button:hover {
+            .stColumn:has(.cart-stepper-btn-inc) button:hover {
                 background-color: #F0C000 !important;
                 background: #F0C000 !important;
                 border-color: #B8860B !important;
                 color: #000000 !important;
             }
+
+            /* Add Buttons in Recommendation Cards */
+            div[data-testid="stVerticalBlockBorderWrapper"]:has(.pdp-grid-card) div[data-testid="stButton"],
+            div[data-testid="stVerticalBlockBorderWrapper"]:has(.pdp-grid-card) div[data-testid="stElementContainer"]:has(button) {
+                width: 100% !important;
+                margin-top: 6px !important;
+            }
+            div[data-testid="stVerticalBlockBorderWrapper"]:has(.pdp-grid-card) div[data-testid="stButton"] > button {
+                width: 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+                height: 34px !important;
+                min-height: 34px !important;
+                max-height: 34px !important;
+                font-size: 13px !important;
+                font-weight: 700 !important;
+                border-radius: 8px !important;
+                padding: 0 10px !important;
+                background-color: #0C831F !important;
+                background: #0C831F !important;
+                color: #FFFFFF !important;
+                border: none !important;
+                box-shadow: 0 1px 3px rgba(12, 131, 31, 0.2) !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                white-space: nowrap !important;
+            }
+            div[data-testid="stVerticalBlockBorderWrapper"]:has(.pdp-grid-card) div[data-testid="stButton"] > button *,
+            div[data-testid="stVerticalBlockBorderWrapper"]:has(.pdp-grid-card) div[data-testid="stButton"] > button p,
+            div[data-testid="stVerticalBlockBorderWrapper"]:has(.pdp-grid-card) div[data-testid="stButton"] > button span {
+                color: #FFFFFF !important;
+                -webkit-text-fill-color: #FFFFFF !important;
+                font-size: 13px !important;
+                font-weight: 700 !important;
+                white-space: nowrap !important;
+                line-height: 1 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            div[data-testid="stVerticalBlockBorderWrapper"]:has(.pdp-grid-card) div[data-testid="stButton"] > button:hover {
+                background-color: #0a6f1a !important;
+                background: #0a6f1a !important;
+                color: #FFFFFF !important;
+            }
+
+            /* Place Order Buttons (Top & Bottom) */
+            div[data-testid="stElementContainer"]:has(.cart-checkout-btn-top) button,
+            div[data-testid="stElementContainer"]:has(.cart-checkout-btn-bottom) button,
+            div[data-testid="stElementContainer"]:has(.cart-checkout-anchor) + div[data-testid="stElementContainer"] button {
+                background-color: #0C831F !important;
+                background: #0C831F !important;
+                color: #FFFFFF !important;
+                font-size: 15px !important;
+                font-weight: 800 !important;
+                height: 48px !important;
+                min-height: 48px !important;
+                border-radius: 12px !important;
+                box-shadow: 0 4px 16px rgba(12, 131, 31, 0.4), 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+                border: none !important;
+                letter-spacing: 0.3px !important;
+                width: 100% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                cursor: pointer !important;
+                margin: 8px 0 !important;
+            }
+            div[data-testid="stElementContainer"]:has(.cart-checkout-btn-top) button *,
+            div[data-testid="stElementContainer"]:has(.cart-checkout-btn-bottom) button *,
+            div[data-testid="stElementContainer"]:has(.cart-checkout-anchor) + div[data-testid="stElementContainer"] button * {
+                color: #FFFFFF !important;
+                -webkit-text-fill-color: #FFFFFF !important;
+                font-size: 15px !important;
+                font-weight: 800 !important;
+                white-space: nowrap !important;
+                line-height: 1 !important;
+            }
+            div[data-testid="stElementContainer"]:has(.cart-checkout-btn-top) button:hover,
+            div[data-testid="stElementContainer"]:has(.cart-checkout-btn-bottom) button:hover,
+            div[data-testid="stElementContainer"]:has(.cart-checkout-anchor) + div[data-testid="stElementContainer"] button:hover {
+                background-color: #0a6f1a !important;
+                background: #0a6f1a !important;
+                color: #FFFFFF !important;
+            }
+
+            /* Hide marker divs */
             div[data-testid="stElementContainer"]:has(.cart-stepper-btn-dec),
-            div[data-testid="stElementContainer"]:has(.cart-stepper-btn-inc) {
+            div[data-testid="stElementContainer"]:has(.cart-stepper-btn-inc),
+            div[data-testid="stElementContainer"]:has(.cart-checkout-btn-top),
+            div[data-testid="stElementContainer"]:has(.cart-checkout-btn-bottom),
+            div[data-testid="stElementContainer"]:has(.cart-checkout-anchor) {
                 display: none !important;
             }
             </style>
@@ -1870,6 +1963,26 @@ def render_screen_4_view_cart():
             f'</div>'
         )
         st.markdown(subtotal_html, unsafe_allow_html=True)
+
+        # Prominent Place Order Button (Directly below Subtotal)
+        st.markdown('<div class="cart-checkout-btn-top"></div>', unsafe_allow_html=True)
+        if st.button(
+            f"Place Order  ·  ₹{subtotal} →",
+            key="btn_cart_checkout_top",
+            type="primary",
+            use_container_width=True,
+        ):
+            new_order = create_simulated_order(scenario_id, st.session_state.cart)
+            if new_order:
+                st.session_state.current_order = new_order
+                st.session_state.simulated_orders.append(new_order)
+                st.session_state.cart = []
+                st.session_state.order_flow_stage = "confirmation"
+                st.session_state.auto_navigated_to_tracking = False
+                st.session_state.current_screen = "order_confirmation"
+                st.rerun()
+            else:
+                st.error("Cart is empty or contains invalid items.")
 
     # Recommendation Section
     st.markdown(
@@ -1967,7 +2080,7 @@ def render_screen_4_view_cart():
     if st.session_state.cart:
         subtotal = sum(p.get("price", 0) for p in st.session_state.cart)
         with st.container():
-            st.markdown('<div class="cart-checkout-anchor"></div>', unsafe_allow_html=True)
+            st.markdown('<div class="cart-checkout-anchor"></div><div class="cart-checkout-btn-bottom"></div>', unsafe_allow_html=True)
             if st.button(
                 f"Place Order  ·  ₹{subtotal} →",
                 key="btn_cart_checkout_bottom",
