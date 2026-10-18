@@ -966,10 +966,6 @@ def reset_screen_scroll(scroll_mode="top"):
     </script>
     """
     components.html(js_code, height=0)
-    try:
-        st.html(js_code, unsafe_allow_javascript=True)
-    except Exception:
-        pass
 
 
 def render_phone_status_bar():
